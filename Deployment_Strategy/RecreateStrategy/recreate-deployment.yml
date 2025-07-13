@@ -1,0 +1,30 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: textutils
+  namespace: recreate-namespace
+spec:
+  replicas: 2 
+  strategy:
+    type: Recreate
+  selector:
+    matchLabels:
+      app: textutils
+  template:
+    metadata:
+      labels:
+        app: textutils
+    spec:   
+      containers:
+      - name: textutils
+        image: omsantoshharsule/textutils:latest
+        ports:
+        - containerPort: 5000
+        resources:
+          requests:
+            memory: "64Mi"
+            cpu: "250m"
+          limits:
+            memory: "128Mi"
+            cpu: "500m"
+    

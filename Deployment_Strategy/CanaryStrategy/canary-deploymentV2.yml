@@ -1,0 +1,33 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: textutils-v2
+  namespace: canary-namespace
+  labels:
+    app: textutils
+    version: v2
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: textutils
+      version: v2
+  template:
+    metadata:
+      labels:
+        app: textutils
+        version: v2
+    spec:
+      containers:
+      - name: textutils
+        image: omsantoshharsule/textutils-newdeploy:latest
+        ports:
+        - containerPort: 5000
+        resources:
+          requests:
+            memory: "64Mi"
+            cpu: "250m"
+          limits:
+            memory: "128Mi"
+            cpu: "500m"
+   

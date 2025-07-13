@@ -1,0 +1,43 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    app: textutils
+  name: textutils 
+  namespace: bluegreen-namespace
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: textutils-blue
+  template:
+    metadata:
+      labels:
+        app: textutils-blue
+    spec:
+      containers:
+      - name: textutils-blue
+        image: omsantoshharsule/textutils:latest
+        ports:
+        - containerPort: 5000
+        resources:
+          requests:
+            memory: "64Mi"
+            cpu: "250m"
+          limits:   
+            memory: "128Mi"
+            cpu: "500m"
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: textutils-service
+  namespace: bluegreen-namespace
+spec:
+  selector:
+    app: textutils-green
+  type: NodePort
+  ports:
+  - port: 5000
+    targetPort: 5000
+    nodePort: 30000
