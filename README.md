@@ -52,4 +52,13 @@ brew install kind
 
 # For Windows (via Chocolatey)
 choco install kind
+```
+## Create a Kind Cluster
+
+### 1. Create a cluster using a config file
+
+```bash
+cd KIND
+kind create cluster --name demo-cluster --config kind-config.yaml
+
 
