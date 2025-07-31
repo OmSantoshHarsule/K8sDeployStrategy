@@ -38,3 +38,16 @@ brew install kubectl
 
 # For Windows (via Chocolatey)
 choco install kubernetes-cli
+
+
+# For Linux/macOS
+curl -Lo ./kind https://kind.sigs.k8s.io/dl/latest/kind-$(uname)-amd64
+chmod +x ./kind
+sudo mv ./kind /usr/local/bin/kind
+
+# For macOS (via Homebrew)
+brew install kind
+
+# For Windows (via Chocolatey)
+choco install kind
+
