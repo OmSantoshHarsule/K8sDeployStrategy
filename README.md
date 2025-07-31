@@ -61,4 +61,10 @@ choco install kind
 cd KIND
 kind create cluster --name demo-cluster --config kind-config.yaml
 
+```
+### 2. Verify Cluster
+
+```bash
+kubectl cluster-info --context kind-demo-cluster
+kubectl get nodes
 
