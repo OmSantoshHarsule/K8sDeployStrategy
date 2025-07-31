@@ -91,3 +91,40 @@ kubectl apply -f rolling-namespace.yml
 kubectl apply -f rolling-deployment.yml
 kubectl apply -f rolling-service.yml
 kubectl apply -f rolling-new-deployment.yml
+```
+
+### 3. BlueGreen Deployment
+```bash
+
+cd ..
+cd BlueGreenStrategy
+kubectl apply -f BlueGreen-namespace.yml
+kubectl apply -f Blue-deployment.yml
+kubectl apply -f Green-newdeployment.yml
+```
+
+### 4. Canary Deployment
+```bash
+
+cd ..
+cd CanaryStrategy
+kubectl apply -f canary-namespace.yml
+kubectl apply -f canary-deploymentV1.yml
+kubectl apply -f canary-deploymentV2.yml
+kubectl apply -f canary-combined-service.yml
+kubectl apply -f ingress.yaml
+```
+
+## Adjusting the Traffic
+```bash
+# Increase canary traffic to ~40% (3:2 ratio)
+kubectl scale deployment canary-deploymentV1 -n canary-namespace --replicas=3
+kubectl scale deployment canary-deploymentV2 -n canary-namespace --replicas=2
+
+# Increase canary traffic to ~60% (2:3 ratio)
+kubectl scale deployment canary-deploymentV1 -n canary-namespace --replicas=2
+kubectl scale deployment canary-deploymentV2 -n canary-namespace --replicas=3
+
+# Complete migration to canary version (0:5 ratio)
+kubectl scale deployment canary-deploymentV1 -n canary-namespace --replicas=0
+kubectl scale deployment canary-deploymentV2 -n canary-namespace --replicas=5
