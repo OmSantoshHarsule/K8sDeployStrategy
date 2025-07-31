@@ -68,3 +68,18 @@ kind create cluster --name demo-cluster --config kind-config.yaml
 kubectl cluster-info --context kind-demo-cluster
 kubectl get nodes
 
+```
+## Apply Deployment Strategies
+
+### 1. Recreate Strategy
+```bash
+
+cd Deployment_Strategy
+cd RecreateStrategy
+kubectl apply -f recreate-namespace.yml
+kubectl apply -f recreate-deployment.yml
+kubectl apply -f recreate-service.yml
+kubectl apply -f recreate-new-deployment.yml
+
+
+
