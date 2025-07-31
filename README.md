@@ -80,6 +80,3 @@ kubectl apply -f recreate-namespace.yml
 kubectl apply -f recreate-deployment.yml
 kubectl apply -f recreate-service.yml
 kubectl apply -f recreate-new-deployment.yml
-
-
-
