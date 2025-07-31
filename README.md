@@ -1,0 +1,40 @@
+# Kubernetes Deployment Strategies
+
+This repository explains and demonstrates **Kubernetes Deployment Strategies** with working YAML manifests. It's beginner-friendly and ideal for understanding how different rollout methods work in a Kubernetes environment using `kind` (Kubernetes IN Docker) for local testing.
+
+## 🚀 Deployment Strategies Covered
+
+- **Recreate Deployment**
+- **Rolling Update**
+- **Blue-Green Deployment**
+- **Canary Deployment**
+
+Each deployment strategy is located in its respective folder with manifest files and explanation comments.
+
+---
+
+## ⚙️ Prerequisites
+
+Before you start, make sure the following tools are installed:
+
+- [Docker](https://docs.docker.com/get-docker/)
+- [kubectl](https://kubernetes.io/docs/tasks/tools/)
+- [kind](https://kind.sigs.k8s.io/)
+
+---
+
+## 🧰 Installation Instructions
+
+### 🔧 Install `kubectl`
+
+```bash
+# For Linux
+curl -LO "https://dl.k8s.io/release/$(curl -s https://dl.k8s.io/release/stable.txt)/bin/linux/amd64/kubectl"
+chmod +x kubectl
+sudo mv kubectl /usr/local/bin/
+
+# For macOS (using Homebrew)
+brew install kubectl
+
+# For Windows (via Chocolatey)
+choco install kubernetes-cli
